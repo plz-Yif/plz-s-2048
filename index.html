@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>2048</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#776e65">
+    <link rel="apple-touch-icon" href="icon.svg">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="2048">
+</head>
+<body>
+    <div class="container">
+        <h1>2048</h1>
+        <div class="score-container">
+            <div class="score-box">
+                <div class="score-title">分数</div>
+                <div id="score" class="score-value">0</div>
+            </div>
+            <div class="score-box">
+                <div class="score-title">最高分</div>
+                <div id="best-score" class="score-value">0</div>
+            </div>
+        </div>
+        <div class="game-container">
+            <div class="grid-container">
+                <div class="grid-cell" id="cell-0-0"></div>
+                <div class="grid-cell" id="cell-0-1"></div>
+                <div class="grid-cell" id="cell-0-2"></div>
+                <div class="grid-cell" id="cell-0-3"></div>
+                <div class="grid-cell" id="cell-1-0"></div>
+                <div class="grid-cell" id="cell-1-1"></div>
+                <div class="grid-cell" id="cell-1-2"></div>
+                <div class="grid-cell" id="cell-1-3"></div>
+                <div class="grid-cell" id="cell-2-0"></div>
+                <div class="grid-cell" id="cell-2-1"></div>
+                <div class="grid-cell" id="cell-2-2"></div>
+                <div class="grid-cell" id="cell-2-3"></div>
+                <div class="grid-cell" id="cell-3-0"></div>
+                <div class="grid-cell" id="cell-3-1"></div>
+                <div class="grid-cell" id="cell-3-2"></div>
+                <div class="grid-cell" id="cell-3-3"></div>
+            </div>
+            <div class="tile-container" id="tile-container"></div>
+        </div>
+        <div class="game-info">
+            <button id="restart-button" class="button">重新开始</button>
+            <div class="game-message" id="game-message">
+                <p></p>
+                <button id="try-again-button" class="button">再试一次</button>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('service-worker.js')
+                    .then((registration) => {
+                        console.log('Service Worker 注册成功:', registration.scope);
+                    })
+                    .catch((error) => {
+                        console.log('Service Worker 注册失败:', error);
+                    });
+            });
+        }
+    </script>
+</body>
+</html>
